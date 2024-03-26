@@ -7,21 +7,33 @@
     <link rel="stylesheet" type="text/css" href="styles/main.css">
 </head>
 <body>
-    <div class="container">
-      <h2>Joke Viewer:</h2>
-      <div class="joke-card" id="jokeCard">
-        <h3 class="joke-setup">
+  <div class="container">
+  <h2 class="joke-viewer-header">Joke Viewer:</h2>
+    <div class="joke-viewer">
+          <%if (joke.setup) {%>
+        <p class="joke-setup">
           <%= joke.setup %>
-        </h3>
+        </p>
         <p class="joke-delivery" id="jokeDelivery">
           <%= joke.delivery%>
         </p>
-      <form method="POST">
-        <button class="joke-button" id="getJokeBtn">
-          Get a new joke
+          <%}else%>
+        <p>
+          <%= joke.joke%>
+        </p>
+
+      <form action="/get-good-joke" method="POST">
+        <button class="good-joke-button">
+          Get a good joke
+        </button>
+      </form>
+      <form action="/get-any-joke" method="POST">
+        <button class="any-joke-button">
+          Get any joke
         </button>
       </form>
       </div>
     </div>
+  </div>
 </body>
 </html>

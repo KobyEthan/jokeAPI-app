@@ -1,0 +1,31 @@
+*{
+    background-color: rgb(32, 32, 32);
+}
+
+.container{
+ color: rgb(230, 230, 230);
+display: flex;
+justify-content: center;
+}
+
+.joke-viewer{
+    color: rgb(230, 230, 230);
+    background-color: black;
+    height: 40vh;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.joke-setup{
+
+}
+
+.joke-delivery{
+    
+}
+
+button {
+    color: rgb(230, 230, 230);
+}
