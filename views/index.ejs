@@ -7,12 +7,21 @@
     <link rel="stylesheet" type="text/css" href="styles/main.css">
 </head>
 <body>
-
-  <%=content%>
-
-</body>
-            </div>
-          </div>
+    <div class="container">
+      <h2>Joke Viewer:</h2>
+      <div class="joke-card" id="jokeCard">
+        <h3 class="joke-setup">
+          <%= joke.setup %>
+        </h3>
+        <p class="joke-delivery" id="jokeDelivery">
+          <%= joke.delivery%>
+        </p>
+      <form method="POST">
+        <button class="joke-button" id="getJokeBtn">
+          Get a new joke
+        </button>
+      </form>
+      </div>
     </div>
 </body>
 </html>

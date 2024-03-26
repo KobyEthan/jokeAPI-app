@@ -4,16 +4,15 @@ import axios from "axios";
 const app = express();
 const port = 3000;
 
-app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", async (req, res) => {
   try {
-    const response = await axios.get(`https://devitjobs.com/api/jobsLight`);
+    const response = await axios.get("https://v2.jokeapi.dev/joke/Any");
     const result = response.data;
     console.log(result);
-    res.render("index.ejs", { content: JSON.stringify(result) });
+    res.render("index.ejs", { joke: result });
   } catch (error) {
     console.log("Failed to make request: ", error.message);
     res.render("index.ejs", {
@@ -22,13 +21,16 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.post("/", async (req, res) => {
+app.post("/get-joke", async (req, res) => {
   try {
-    console.log(req.body);
-    res.send("Received POST request");
+    const { category } = req.body;
+    const response = await axios.get(`https://v2.jokeapi.dev/joke/${category}`);
+    const result = response.data;
+    console.log(result);
+    res.send(result);
   } catch (error) {
-    console.log("Error handling POST request:", error);
-    res.status(500).send("Internal Server Error");
+    console.log("Failed to get joke: ", error.message);
+    res.status(500).send("Failed to get joke");
   }
 });
 
