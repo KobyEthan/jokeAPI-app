@@ -22,24 +22,32 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/get-custom-joke", async (req, res) => {
-   try {
-    console.log(req.body.flags);
-    console.log(req.body.category);
-     const category = req.body.category;
-     const flags = req.body.flags;
-     if (category && flags){
-     const response = await axios.get(`https://v2.jokeapi.dev/joke/${category}?blacklistFlags=${flags}`);
-     const result = response.data;
-     console.log(result);
-     res.render("index.ejs", { joke: result });
-    }else {
-      res.render("index.ejs") //do something with this later
+  try {
+    const category = req.body.category;
+    const flags = req.body.flags || []; // Ensuring flags is an array even if none selected
+    if (category) {
+      const response = await axios.get(`https://v2.jokeapi.dev/joke/${category}?blacklistFlags=${flags}`);
+      const result = response.data;
+      console.log(result);
+      res.render("index.ejs", { joke: result });
+    } else {
+      try {
+        const response = await axios.get(`https://v2.jokeapi.dev/joke/Any`);
+        const result = response.data;
+        const error = "You did not select a category, displaying a joke in any category: ";
+        console.log(result);
+        res.render("index.ejs", { joke: result, error: error });
+      } catch (error) {
+        console.log("Failed to get any joke: ", error.message);
+        res.status(500).send("Failed to get any joke");
+      }
     }
-   } catch (error) {
-     console.log("Failed to get joke: ", error.message);
-     res.status(500).send("Failed to get joke");
-   }
- });
+  } catch (error) {
+    console.log("Failed to get custom joke: ", error.message);
+    res.status(500).send("Failed to get custom joke");
+  }
+});
+
 
  app.post("/get-any-joke", async (req, res) => {
   try {
@@ -49,7 +57,7 @@ app.post("/get-custom-joke", async (req, res) => {
     res.render("index.ejs", { joke: result });
   } catch (error) {
     console.log("Failed to get any joke: ", error.message);
-    res.status(500).send("Failed to get joke");
+    res.status(500).send("Failed to get any joke");
   }
 });
 

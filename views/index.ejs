@@ -10,6 +10,11 @@
   <div class="container">
   <h2 class="joke-viewer-header">Joke Viewer:</h2>
     <div class="joke-viewer">
+      <%if (locals.error) {%>
+      <p class="error-message">
+        <%=error%>
+      </p>
+      <%}%>
         <%if (joke.setup) {%>
 
         <p class="joke-setup">
@@ -20,7 +25,6 @@
         </p>
 
           <%}else%>
-
         <p>
           <%= joke.joke%>
         </p>
