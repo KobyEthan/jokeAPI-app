@@ -10,26 +10,46 @@
   <div class="container">
   <h2 class="joke-viewer-header">Joke Viewer:</h2>
     <div class="joke-viewer">
-          <%if (joke.setup) {%>
+        <%if (joke.setup) {%>
+
         <p class="joke-setup">
           <%= joke.setup %>
         </p>
         <p class="joke-delivery" id="jokeDelivery">
           <%= joke.delivery%>
         </p>
+
           <%}else%>
+
         <p>
           <%= joke.joke%>
         </p>
+      <form action="get-custom-joke" method="POST">
+        <select name="category" class="form-select" multiple>
+          <option value="Programming">Programming</option>
+          <option value="Miscellaneous">Misc</option>
+          <option value="Dark">Dark</option>
+          <option value="Pun">Pun</option>
+          <option value="Spooky">Spooky</option>
+          <option value="Christmas">Christmas</option>
+        </select>
 
-      <form action="/get-good-joke" method="POST">
-        <button class="good-joke-button">
-          Get a good joke
+        <select name="flags" class="form-select" multiple>
+          <option value="nsfw">NSFW</option>
+          <option value="religious">Religious</option>
+          <option value="political">Political</option> 
+          <option value="racist">Racist</option>
+          <option value="sexist">Sexist</option>
+          <option value="explicit">Explicit</option>
+        </select>
+        <button type="submit" class="joke-button">
+          Get your custom joke!
         </button>
       </form>
-      <form action="/get-any-joke" method="POST">
-        <button class="any-joke-button">
-          Get any joke
+
+      <form action="get-any-joke" method="POST">
+        <button type="sbmit" class="joke-button">
+          Get Any Joke!
         </button>
       </form>
       </div>

@@ -1,13 +1,19 @@
-*{
+/* body{
     background-color: rgb(32, 32, 32);
+    height: 100%;
 }
 
 .container{
- color: rgb(230, 230, 230);
-display: flex;
-justify-content: center;
+    color: rgb(230, 230, 230);
+    display: flex;
+    justify-content: center;
 }
+.joke-viewer-header{
+    color: rgb(230, 230, 230);
+    width: 100%;
+    margin-bottom: 40px;
 
+}
 .joke-viewer{
     color: rgb(230, 230, 230);
     background-color: black;
@@ -16,7 +22,7 @@ justify-content: center;
     display: flex;
     justify-content: center;
     padding: 20px;
-}
+} */
 
 .joke-setup{
 
@@ -27,5 +33,5 @@ justify-content: center;
 }
 
 button {
-    color: rgb(230, 230, 230);
+    color: rgb(0, 0, 0);
 }
