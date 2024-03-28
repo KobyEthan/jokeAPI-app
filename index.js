@@ -32,7 +32,7 @@ app.post("/get-custom-joke", async (req, res) => {
       res.render("index.ejs", { joke: result });
     } else {
       try {
-        const response = await axios.get(`https://v2.jokeapi.dev/joke/Any`);
+        const response = await axios.get(`https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit`);
         const result = response.data;
         const error = "You did not select a category, displaying a joke in any category: ";
         console.log(result);
@@ -51,7 +51,7 @@ app.post("/get-custom-joke", async (req, res) => {
 
  app.post("/get-any-joke", async (req, res) => {
   try {
-    const response = await axios.get(`https://v2.jokeapi.dev/joke/Any`);
+    const response = await axios.get(`https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit`);
     const result = response.data;
     console.log(result);
     res.render("index.ejs", { joke: result });

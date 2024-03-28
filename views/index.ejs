@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="container">
-  <h2 class="joke-viewer-header">Joke Viewer:</h2>
+  <h2 class="joke-viewer-header">Joke Viewer</h2>
     <div class="joke-viewer">
       <%if (locals.error) {%>
       <p class="error-message">
@@ -28,8 +28,13 @@
         <p>
           <%= joke.joke%>
         </p>
+      </div>
       <form action="get-custom-joke" method="POST">
-        <select name="category" class="form-select" multiple>
+
+        <div class="category-container">
+        <h4 class="category-title">Category</h4>
+        <p>Select a category</p>
+        <select name="category" class="form-select">
           <option value="Programming">Programming</option>
           <option value="Miscellaneous">Misc</option>
           <option value="Dark">Dark</option>
@@ -37,26 +42,35 @@
           <option value="Spooky">Spooky</option>
           <option value="Christmas">Christmas</option>
         </select>
+      </div>
 
-        <select name="flags" class="form-select" multiple>
+        <div class="flags-container">
+        <h4 class="flags-title">Flags</h4>
+        <p>Select a flag to blacklist from the custom joke. (The joke will not have the selected flag)</p>
+        <select name="flags" class="form-select">
+          <option value="nsfw,religious,political,racist,sexist,explicit">Select all flags</option>
           <option value="nsfw">NSFW</option>
           <option value="religious">Religious</option>
           <option value="political">Political</option> 
           <option value="racist">Racist</option>
           <option value="sexist">Sexist</option>
           <option value="explicit">Explicit</option>
+          <option value="">Select no flags</option>
         </select>
+      </div>
+
         <button type="submit" class="joke-button">
-          Get your custom joke!
+          Get a custom joke!
         </button>
+
       </form>
 
       <form action="get-any-joke" method="POST">
+        <p>This button will get a joke from within any category and that includes all of the blacklisted flags</p>
         <button type="sbmit" class="joke-button">
-          Get Any Joke!
+          Get a Joke from any Category!
         </button>
       </form>
-      </div>
     </div>
   </div>
 </body>

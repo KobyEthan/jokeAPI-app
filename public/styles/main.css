@@ -1,23 +1,52 @@
 
 
 body {
-  margin: 0;
-  height: 100vh; /* Make body take full height of viewport */
+  min-height: 100vh;
+  background: #e4e4e4;
   display: flex;
-  justify-content: center; /* Center contents horizontally */
-  align-items: center; /* Center contents vertically */
-  background-color: #f0f0f0; /* Background color */
+  align-items: center;
+  flex-direction: column;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
 }
 
 .container {
-  padding: 20px;
+  height: 100%;
+  width: 100%;
+  max-width: 570px;
+  margin: 0 auto;
+  padding: 60px;
+  background-color: rgb(199, 199, 199);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0, 68, 156, 0.1); /* Box shadow */
+}
+.form {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 80px;
+  grid-column-gap: 10px;
+}
+
+.joke-button {
+  outline: none;
+  border: 1px solid rgb(232, 232, 232);
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow */
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 36px;
+  display: inline;
 }
 
 .joke-viewer-header {
-  text-align: center;
+  color: rgb(0, 0, 0);
+  font-family: "Titan One", cursive;
   margin-bottom: 20px;
 }
 
@@ -27,10 +56,16 @@ body {
     align-items: center;
   }
 
+  .form-select{
+    display: inline;
+  }
+
 .joke-setup,
 .joke-delivery,
 .error-message {
-  margin-bottom: 10px;
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .joke-button {
