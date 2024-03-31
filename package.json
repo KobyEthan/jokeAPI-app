@@ -4,6 +4,10 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+
+  "scripts": {
+    "start": "node index.js"
+  },
   
   "author": "Koby Smith-McCallister",
   "license": "ISC",
