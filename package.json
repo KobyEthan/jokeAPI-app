@@ -10,8 +10,8 @@
   "author": "Koby Smith-McCallister",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.4.0",
-    "ejs": "^3.1.9",
+    "axios": "^1.6.8",
+    "ejs": "^3.1.10",
     "express": "^4.19.2"
   }
 }

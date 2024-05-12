@@ -9,7 +9,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/", async (req, res) => {
   try {
-    const response = await axios.get("https://v2.jokeapi.dev/joke/Programming,Miscellaneous,Pun,Spooky,Christmas?blacklistFlags=nsfw,religious,political,racist,sexist,explicit");
+    const response = await axios.get(
+      "https://v2.jokeapi.dev/joke/Programming,Miscellaneous,Pun,Spooky,Christmas?blacklistFlags=nsfw,religious,political,racist,sexist,explicit"
+    );
     const result = response.data;
     console.log(result);
     res.render("index.ejs", { joke: result });
@@ -26,15 +28,20 @@ app.post("/get-custom-joke", async (req, res) => {
     const category = req.body.category;
     const flags = req.body.flags || []; // Ensuring flags is an array even if none selected
     if (category) {
-      const response = await axios.get(`https://v2.jokeapi.dev/joke/${category}?blacklistFlags=${flags}`);
+      const response = await axios.get(
+        `https://v2.jokeapi.dev/joke/${category}?blacklistFlags=${flags}`
+      );
       const result = response.data;
       console.log(result);
       res.render("index.ejs", { joke: result });
     } else {
       try {
-        const response = await axios.get(`https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit`);
+        const response = await axios.get(
+          `https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit`
+        );
         const result = response.data;
-        const error = "You did not select a category, displaying a joke in any category: ";
+        const error =
+          "You did not select a category, displaying a joke in any category: ";
         console.log(result);
         res.render("index.ejs", { joke: result, error: error });
       } catch (error) {
@@ -48,10 +55,11 @@ app.post("/get-custom-joke", async (req, res) => {
   }
 });
 
-
- app.post("/get-any-joke", async (req, res) => {
+app.post("/get-any-joke", async (req, res) => {
   try {
-    const response = await axios.get(`https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit`);
+    const response = await axios.get(
+      `https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit`
+    );
     const result = response.data;
     console.log(result);
     res.render("index.ejs", { joke: result });
@@ -61,4 +69,6 @@ app.post("/get-custom-joke", async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || port);
+app.listen(process.env.PORT || port, () => {
+  console.log(`Server running on port ${port}`);
+});
