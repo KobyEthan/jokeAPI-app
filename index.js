@@ -13,7 +13,6 @@ app.get("/", async (req, res) => {
       "https://v2.jokeapi.dev/joke/Programming,Miscellaneous,Pun,Spooky,Christmas?blacklistFlags=nsfw,religious,political,racist,sexist,explicit"
     );
     const result = response.data;
-    console.log(result);
     res.render("index.ejs", { joke: result });
   } catch (error) {
     console.log("Failed to make request: ", error.message);
@@ -32,7 +31,6 @@ app.post("/get-custom-joke", async (req, res) => {
         `https://v2.jokeapi.dev/joke/${category}?blacklistFlags=${flags}`
       );
       const result = response.data;
-      console.log(result);
       res.render("index.ejs", { joke: result });
     } else {
       try {
@@ -42,7 +40,6 @@ app.post("/get-custom-joke", async (req, res) => {
         const result = response.data;
         const error =
           "You did not select a category, displaying a joke in any category: ";
-        console.log(result);
         res.render("index.ejs", { joke: result, error: error });
       } catch (error) {
         console.log("Failed to get any joke: ", error.message);
@@ -61,7 +58,6 @@ app.post("/get-any-joke", async (req, res) => {
       `https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit`
     );
     const result = response.data;
-    console.log(result);
     res.render("index.ejs", { joke: result });
   } catch (error) {
     console.log("Failed to get any joke: ", error.message);
